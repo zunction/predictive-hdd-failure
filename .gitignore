@@ -8,3 +8,6 @@
 .nv
 .local
 .jupyter
+data
+processed
+
