@@ -1,19 +1,19 @@
 # Predictive HDD Failure
 
-We use [Backblaze](https://www.backblaze.com/) HDD (hard disk drive) data dataset and XGBoost to create a model that can predict (two days in advance) HDD failure using past `n` days record of [SMART](https://en.wikipedia.org/wiki/S.M.A.R.T.) data. For demonstration purposes, we take `n=7`.
+We use [Backblaze](https://www.backblaze.com/) HDD (hard disk drive) data dataset and XGBoost to create a model that can predict (two days in advance) HDD failure using past `n` days record of [SMART](https://en.wikipedia.org/wiki/S.M.A.R.T.) data. To find out more about the dataset, please visit the [dataset webpage](https://www.backblaze.com/b2/hard-drive-test-data.html).
 
 We have two main categories of data in our processed dataset:
 
 * "normal": `n` days worth of SMART data for a HDD functioning normally two days later
 * "failure": `n` days worth of SMART data for a HDD which fails two days later
 
-Both categories also include the HDD model and capacity as additional features.
+Both categories also include the HDD model and capacity as additional features. The feature vector used by XGBoost for the classification is shown in the diagram below:
 
-To find out more about the dataset, please visit the [dataset webpage](https://www.backblaze.com/b2/hard-drive-test-data.html).
+![](images/feature_vector.png)
 
 ## Results
 
-We obtain reasonable results on the evaluation set, consisting of 4208 cases of "normal" drives and 319 cases of "failure" drives. The evaluation data is dated from **October to December 2018**, and takes place directly after the training set which contains data from **January 2015 to September 2018**. We achieve **61% recall** in correctly predicting drives that are about to fail in the evaluation set. This means that:
+We obtain reasonable results on the evaluation set, consisting of 4208 cases of "normal" drives and 319 cases of "failure" drives. The evaluation data is dated from **October to December 2018**, and takes place directly after the training set which contains data from **January 2015 to September 2018**. We achieve **61% recall** in correctly predicting drives that are about to fail in the evaluation set with `n=7` This means that:
 
 * 39% false negative (drive is going to fail but we predict normal operation)
 * 3% false positive (drive is normal but we predict failure)
