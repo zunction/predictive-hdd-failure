@@ -22,13 +22,14 @@ We obtain reasonable results on the evaluation set, consisting of 4208 cases of 
 
 With hyper-parameter tuning and feature engineering, it is likely we can do better.
 
-By using RAPIDS components, namely cuDF and the GPU-accelerated version of XGBoost, we achieve more than 10x speedup over doing everything on a high-end Intel Xeon CPU.
+By using RAPIDS components, namely cuDF and the GPU-accelerated version of XGBoost, we achieve more than 10x speedup over doing everything on a high-end Intel Xeon CPU. (results averaged across three runs)
 
-| Processor                       | Time Taken    |
-| ------------------------------- | ------------- |
-| Intel Xeon E5-2698 v4 (20C/40T) | 29.9 seconds  |
-| NVIDIA Tesla V100 (16GB PCIE)   | 1.8 seconds   |
-| **Overall speedup**             | **17x**       |
+| Processor                       | Time Taken     |
+| ------------------------------- | -------------- |
+| Intel Xeon E5-2698 v4 (20C/40T) | 29.9 seconds   |
+| Intel Core i5-8500 (6C/6T)      | 7.9 seconds    |
+| NVIDIA Tesla V100 (16GB PCIE)   | 1.8 seconds    |
+| **Overall speedup**             | **4.2x to 17x**|
 
 ## Running the Code
 
