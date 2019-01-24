@@ -1,11 +1,6 @@
 # Predictive HDD Failure
 
-We use [Backblaze](https://www.backblaze.com/) HDD data dataset and XGBoost to create a model that can predict (2 days in advance) HDD failure using past `n` days record of SMART data. For demonstration purposes, we take `n=7`.
-
-More information:
-
-* Dataset Documentation: https://www.backblaze.com/b2/hard-drive-test-data.html
-* [What is SMART data?](https://www.hdsentinel.com/smart/index.php)
+We use [Backblaze](https://www.backblaze.com/) HDD (hard disk drive) data dataset and XGBoost to create a model that can predict (two days in advance) HDD failure using past `n` days record of [SMART](https://en.wikipedia.org/wiki/S.M.A.R.T.) data. For demonstration purposes, we take `n=7`.
 
 We have two main categories of data in our processed dataset:
 
@@ -14,15 +9,14 @@ We have two main categories of data in our processed dataset:
 
 Both categories also include the HDD model and capacity as additional features.
 
+To find out more about the dataset, please visit the [dataset webpage](https://www.backblaze.com/b2/hard-drive-test-data.html).
+
 ## Results
 
-We obtain reasonable results on the evaluation set, consisting of 4208 "normal" drives and 319 "failure" drives.
+We obtain reasonable results on the evaluation set, consisting of 4208 cases of "normal" drives and 319 cases of "failure" drives. The evaluation data is dated from **October to December 2018**, and takes place directly after the training set which contains data from **January 2015 to September 2018**. We achieve **61% recall** in correctly predicting drives that are about to fail in the evaluation set. This means that:
 
-* 61% precision and recall in predicting drives that are about to fail in the evaluation set
-* 3% false positive (drive is normal but we predict failure)
 * 39% false negative (drive is going to fail but we predict normal operation)
-
-These data are from **October to December 2018**, and takes place directly after the training set which contains data from **January 2015 to September 2018**.
+* 3% false positive (drive is normal but we predict failure)
 
 ![](images/cnf_matrix.png)
 
@@ -41,6 +35,15 @@ You need to download the `train.csv` and `eval.csv` files in order to run the ma
 To run `drive_data_xgboost`, you will need to have cuDF and RAPIDS installed. The easiest way to ensure this is to use the `nvaitc/ai-lab` container.
 
 ```
+# download repository
+git clone https://github.com/NVAITC/predictive-hdd-failure
+cd predictive-hdd-failure
+
+# download processed data
+wget https://s3-ap-southeast-1.amazonaws.com/deeplearning-iap-material/hdd_test_data/train.csv
+wget https://s3-ap-southeast-1.amazonaws.com/deeplearning-iap-material/hdd_test_data/eval.csv
+
+# download and run container
 docker pull nvaitc/ai-lab:latest
 nvidia-docker run --rm -p 8888:8888 -v /home/$USER/predictive-hdd-failure:/home/jovyan nvaitc/ai-lab
 ```
@@ -49,9 +52,9 @@ Please note that you will require the nvidia-driver>=396 and nvidia-docker2 runt
 
 **Processed Data**
 
-The training set `train.csv` consists of all the drive failures from 2015Q1-2018Q3, and a subset (40 each day) of the data for working drives, sampled at intervals (effectively random since drive counts change every day).
+The training set `train.csv` consists of all the drive failures from 2015Q1-2018Q3, and a subset (about 40 each day) of the data for working drives, sampled at intervals (effectively random since drive counts change every day).
 
-The evaluation set `eval.csv` consists of all the drive failures in 2018Q4, and a subset (100 each day) of the data for working drives.
+The evaluation set `eval.csv` consists of all the drive failures in 2018Q4, and a subset (about 100 each day) of the data for working drives.
 
 * Training Set: https://s3-ap-southeast-1.amazonaws.com/deeplearning-iap-material/hdd_test_data/train.csv
 * Evaluation Set: https://s3-ap-southeast-1.amazonaws.com/deeplearning-iap-material/hdd_test_data/eval.csv
