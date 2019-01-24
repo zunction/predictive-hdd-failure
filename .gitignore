@@ -9,6 +9,6 @@
 .nv
 .local
 .jupyter
-data
+data*
 processed
 
