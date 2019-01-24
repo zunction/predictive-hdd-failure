@@ -22,7 +22,7 @@ We obtain reasonable results on the evaluation set, consisting of 4208 cases of 
 
 With hyper-parameter tuning and feature engineering, it is likely we can do better.
 
-By using RAPIDS components, namely cuDF and the GPU-accelerated version of XGBoost, we achieve more than 10x speedup over doing everything on a high-end Intel Xeon CPU, which actually performed much worse compared to a consumer CPU, probablt as a result of Turbo Boost on the consumer CPU.
+By using [RAPIDS](https://rapids.ai/) components, namely [cuDF](https://github.com/rapidsai/cudf) and the GPU-accelerated version of XGBoost, we achieve more than 10x speedup over doing everything on a high-end Intel Xeon CPU, which actually performed much worse compared to a consumer CPU, probably as a result of higher boost clock on the consumer CPU.
 
 | Processor                       | Time Taken      |
 | ------------------------------- | --------------- |
