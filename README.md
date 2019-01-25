@@ -30,7 +30,7 @@ By using [RAPIDS](https://rapids.ai/) components, namely [cuDF](https://github.c
 | NVIDIA Tesla V100 (16GB PCIE)   | 1.8 seconds     |
 | **Overall speedup**             | **17x**         |
 
-Results were averaged across three runs, measured from the `nvaitc/ai-lab:0.4` container. The test was performed using an NVIDIA DGX Station running DGX OS 4 (Ubuntu 18.04) and the latest 410.79 driver.
+Results were averaged across three runs, measured from the `nvaitc/ai-lab:0.4` container. The test was performed using an [NVIDIA DGX Station](https://www.nvidia.com/en-sg/data-center/dgx-station/) running DGX OS 4 (Ubuntu 18.04) and the latest 410.79 driver.
 
 ## Running the Code
 
