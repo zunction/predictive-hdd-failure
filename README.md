@@ -1,6 +1,6 @@
 # Predictive HDD Failure
 
-We use [Backblaze](https://www.backblaze.com/) HDD (hard disk drive) data dataset and XGBoost to create a model that can predict (two days in advance) HDD failure using past `n` days record of [SMART](https://en.wikipedia.org/wiki/S.M.A.R.T.) data. To find out more about the dataset, please visit the [dataset webpage](https://www.backblaze.com/b2/hard-drive-test-data.html).
+This is an example project meant to demonstrate how RAPIDS can be used to speed up the development and training of machine learning models that use frameworks such as XGBoost. We use the [Backblaze](https://www.backblaze.com/) HDD (hard disk drive) data dataset and XGBoost to create a model that can predict (two days in advance) HDD failure using past `n` days record of [SMART](https://en.wikipedia.org/wiki/S.M.A.R.T.) data. To find out more about the dataset, please visit the [dataset webpage](https://www.backblaze.com/b2/hard-drive-test-data.html).
 
 We have two main categories of data in our processed dataset:
 
@@ -62,9 +62,9 @@ Please note that you will require the nvidia-driver>=396 and nvidia-docker2 runt
 
 **Processed Data**
 
-The training set `train.csv` consists of all the drive failures from 2015Q1-2018Q3, and a subset (about 40 each day) of the data for working drives, sampled at intervals (effectively random since drive counts change every day).
+The training set `train.csv` consists of all the drive failures from **Jan 2015 to Sep 2018**, and a subset (about 40 each day) of the data for working drives, sampled at intervals (effectively random since drive counts change every day).
 
-The evaluation set `eval.csv` consists of all the drive failures in 2018Q4, and a subset (about 100 each day) of the data for working drives.
+The evaluation set `eval.csv` consists of all the drive failures in **Oct - Dec 2018**, and a subset (about 100 each day) of the data for working drives.
 
 * Training Set: https://s3-ap-southeast-1.amazonaws.com/deeplearning-iap-material/hdd_test_data/train.csv
 * Evaluation Set: https://s3-ap-southeast-1.amazonaws.com/deeplearning-iap-material/hdd_test_data/eval.csv
