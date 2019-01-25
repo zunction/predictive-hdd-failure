@@ -22,16 +22,15 @@ We obtain reasonable results on the evaluation set, consisting of 4208 cases of 
 
 With hyper-parameter tuning and feature engineering, it is likely we can do better.
 
-By using [RAPIDS](https://rapids.ai/) components, namely [cuDF](https://github.com/rapidsai/cudf) and the GPU-accelerated version of XGBoost, we achieve more than 10x speedup over doing everything on a high-end Intel Xeon CPU, which actually performed much worse compared to a consumer CPU, probably as a result of higher boost clock on the consumer CPU.
+By using [RAPIDS](https://rapids.ai/) components, namely [cuDF](https://github.com/rapidsai/cudf) and the GPU-accelerated version of XGBoost, we achieve about 17x speedup over doing everything on a high-end Intel Xeon CPU.
 
 | Processor                       | Time Taken      |
 | ------------------------------- | --------------- |
 | Intel Xeon E5-2698 v4 (20C/40T) | 29.9 seconds    |
-| Intel Core i5-8500 (6C/6T)      | 7.9 seconds     |
 | NVIDIA Tesla V100 (16GB PCIE)   | 1.8 seconds     |
-| **Overall speedup**             | **4.2x to 17x** |
+| **Overall speedup**             | **17x**         |
 
-(Results averaged across three runs, measured from the `nvaitc/ai-lab:0.4` container)
+Results were averaged across three runs, measured from the `nvaitc/ai-lab:0.4` container. The test was performed using an NVIDIA DGX Station running DGX OS 4 (Ubuntu 18.04) and the latest 410.79 driver.
 
 ## Running the Code
 
