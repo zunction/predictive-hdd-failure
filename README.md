@@ -50,8 +50,8 @@ git clone https://github.com/NVAITC/predictive-hdd-failure
 cd predictive-hdd-failure
 
 # download processed data
-wget https://s3-ap-southeast-1.amazonaws.com/deeplearning-iap-material/hdd_test_data/train.csv
-wget https://s3-ap-southeast-1.amazonaws.com/deeplearning-iap-material/hdd_test_data/eval.csv
+wget https://s3-ap-southeast-1.amazonaws.com/deeplearning-mat/hdd_test_data/train.csv
+wget https://s3-ap-southeast-1.amazonaws.com/deeplearning-mat/hdd_test_data/test.csv
 
 # download and run container
 docker pull nvaitc/ai-lab:latest
