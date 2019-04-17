@@ -13,7 +13,7 @@ Both categories also include the HDD model and capacity as additional features. 
 
 ## Results
 
-We obtain reasonable results on the evaluation set, consisting of 4208 cases of "normal" drives and 319 cases of "failure" drives. The evaluation data is dated from **October to December 2018**, and takes place directly after the training set which contains data from **January 2015 to September 2018**. We achieve **61% recall** in correctly predicting drives that are about to fail in the evaluation set with `n=7` This means that:
+We obtain reasonable results on the evaluation set, consisting of 4208 cases of "normal" drives and 319 cases of "failure" drives. The evaluation data is dated from **October 2018 to December 2018**, and takes place directly after the training set which contains data from **January 2015 to September 2018**. We achieve **61% recall** in correctly predicting drives that are about to fail in the evaluation set with `n=7` This means that:
 
 * 39% false negative (drive is going to fail but we predict normal operation)
 * 3% false positive (drive is normal but we predict failure)
@@ -22,15 +22,15 @@ We obtain reasonable results on the evaluation set, consisting of 4208 cases of 
 
 With hyper-parameter tuning and feature engineering, it is likely we can do better.
 
-By using [RAPIDS](https://rapids.ai/) components, namely [cuDF](https://github.com/rapidsai/cudf) and the GPU-accelerated version of XGBoost, we achieve about 17x speedup over doing everything on a high-end Intel Xeon CPU.
+By using [RAPIDS](https://rapids.ai/) components, namely [cuDF](https://github.com/rapidsai/cudf) and the GPU-accelerated version of XGBoost, we achieve more than 4x speedup over doing everything on a high-end Intel Xeon CPU.
 
 | Processor                       | Time Taken      |
 | ------------------------------- | --------------- |
-| Intel Xeon E5-2698 v4 (20C/40T) | 29.9 seconds    |
-| NVIDIA Tesla V100 (16GB PCIE)   | 1.8 seconds     |
-| **Overall speedup**             | **17x**         |
+| Intel Xeon E5-2698 v4 (20C/40T) | 10.2 seconds    |
+| NVIDIA Tesla V100 (16GB PCIE)   | 2.4 seconds     |
+| **Overall speedup**             | **4.3 x**         |
 
-Results were averaged across three runs, measured from the `nvaitc/ai-lab:0.4` container. The test was performed using an [NVIDIA DGX Station](https://www.nvidia.com/en-sg/data-center/dgx-station/) running DGX OS 4 (Ubuntu 18.04) and the latest 410.79 driver.
+Results were averaged across three runs, measured from the `nvaitc/ai-lab:rapids` container. The test was performed using an [NVIDIA DGX Station](https://www.nvidia.com/en-sg/data-center/dgx-station/) running DGX OS 4 (Ubuntu 18.04) and the latest 410.79 driver.
 
 ## Running the Code
 
@@ -66,7 +66,7 @@ Please note that you will require the nvidia-driver>=396 and nvidia-docker2 runt
 
 The training set `train.csv` consists of all the drive failures from **Jan 2015 to Sep 2018**, and a subset (about 40 each day) of the data for working drives, sampled at intervals (effectively random since drive counts change every day).
 
-The evaluation set `eval.csv` consists of all the drive failures in **Oct - Dec 2018**, and a subset (about 100 each day) of the data for working drives.
+The evaluation set `eval.csv` consists of all the drive failures in **Oct 2018 - Dec 2018**, and a subset (about 100 each day) of the data for working drives.
 
 * Training Set: https://s3-ap-southeast-1.amazonaws.com/deeplearning-iap-material/hdd_test_data/train.csv
 * Evaluation Set: https://s3-ap-southeast-1.amazonaws.com/deeplearning-iap-material/hdd_test_data/eval.csv
