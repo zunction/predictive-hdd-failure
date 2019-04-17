@@ -46,6 +46,8 @@ To run `drive_data_xgboost`, you will need to have cuDF and RAPIDS installed. Th
 
 ```
 # download repository
+mkdir work
+cd work
 git clone https://github.com/NVAITC/predictive-hdd-failure
 cd predictive-hdd-failure
 
@@ -54,8 +56,8 @@ wget https://s3-ap-southeast-1.amazonaws.com/deeplearning-mat/hdd_test_data/trai
 wget https://s3-ap-southeast-1.amazonaws.com/deeplearning-mat/hdd_test_data/test.csv
 
 # download and run container
-docker pull nvaitc/ai-lab:latest
-nvidia-docker run --rm -p 8888:8888 -v /home/$USER/predictive-hdd-failure:/home/jovyan nvaitc/ai-lab
+docker pull nvaitc/ai-lab:rapids
+nvidia-docker run --rm -p 8888:8888 -v /home/$USER/work/predictive-hdd-failure:/home/jovyan nvaitc/ai-lab:rapids
 ```
 
 Please note that you will require the nvidia-driver>=396 and nvidia-docker2 runtime on the host machine. [Additional Instructions](https://github.com/NVAITC/ai-lab/blob/master/INSTRUCTIONS.md)
