@@ -53,7 +53,7 @@ cd predictive-hdd-failure
 
 # download processed data
 wget https://s3-ap-southeast-1.amazonaws.com/deeplearning-mat/hdd_test_data/train.csv
-wget https://s3-ap-southeast-1.amazonaws.com/deeplearning-mat/hdd_test_data/test.csv
+wget https://s3-ap-southeast-1.amazonaws.com/deeplearning-mat/hdd_test_data/eval.csv
 
 # download and run container
 docker pull nvaitc/ai-lab:rapids
